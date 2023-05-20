@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,28 +31,111 @@ namespace ProductConfiguration
             this.DisplayUnits.AddRange(displayUnits.OrderBy(c => c.Specifier.Index)) ;
         }
 
-        void GetPoePoweredComponent(int poeIndex)
+        public IEnumerable<CameraComponent> GetCamerasByConfigOrder()
         {
-            var cameras = ProductConfiguration.GetRelatedComponents(this.Cameras, ComponentType.Poe, poeIndex);
-            foreach (var cam in cameras)
+            //Poe接続のカメラが優先（POEのindex順）
+            foreach (var poe in this.Poes)
             {
-                if (cam.PowerType == PowerSupplyType.Poe)
+                var cameras =
+                    ComponentBase.GetRelatedComponents(this.Cameras, ComponentType.Poe, poe.Specifier.Index);
+                foreach (var cam in cameras)
                 {
-                    var lights =
-                        ProductConfiguration.GetRelatedComponents(this.Lights, ComponentType.Camera,
-                            cam.Specifier.Index);
+                    yield return cam;
+                }
+            }
+
+            //Poe接続ではないカメラ
+            foreach (var cam in this.Cameras)
+            {
+                if (cam.GetRelatedComponent(ComponentType.Poe).Count == 0)
+                {
+                    yield return cam;
                 }
             }
         }
 
-        public static IEnumerable<T> GetRelatedComponents<T>(List<T> componentList, ComponentType type, int index) where T : ComponentBase 
-        {
-            foreach (var component in componentList)
+        public IEnumerable<LightComponent>   GetLightsByConfigOrder(int cameraIndex)
+        { 
+            var lights = ComponentBase.GetRelatedComponents(this.Lights, ComponentType.Camera, cameraIndex ).ToList();
+            lights.Sort((a, b) =>
             {
-                var specifier = component.GetRelatedComponent(type) ?.First();
-                if (specifier != null && specifier.Index == index)
+                var lightUnitA = a.GetRelatedComponent(ComponentType.LightControlUnit).FirstOrDefault();
+                var lightUnitB = b.GetRelatedComponent(ComponentType.LightControlUnit).FirstOrDefault();
+
+                if (lightUnitA == null)
                 {
-                    yield return component;
+                    return -1;
+                }
+
+                if (lightUnitB == null)
+                {
+                    return 1;
+                }
+
+                return lightUnitA.Index - lightUnitB.Index;
+            });
+            foreach (var light in lights)
+            {
+                yield return light;
+            }
+        }
+
+        public IEnumerable<LightControlUnitComponent> GetLightControlUnitsByConfigOrder(int cameraIndex)
+        {
+            var lights = GetLightsByConfigOrder(cameraIndex);
+            var lightUnitIndexList = new List<int>();
+            foreach (var light in lights)
+            {
+                var lightUnitSpecifier = light.GetRelatedComponent(ComponentType.LightControlUnit).FirstOrDefault();
+                if (lightUnitSpecifier != null && !lightUnitIndexList.Exists(i=>i == lightUnitSpecifier.Index))
+                {
+                    lightUnitIndexList.Add(lightUnitSpecifier.Index);
+                    var lightUnit = this.LightControlUnits.Find(u => u.Specifier.Index == lightUnitSpecifier.Index);
+                    Debug.Assert(lightUnit != null);
+                    yield return lightUnit;
+                }
+            }
+        }
+
+        public IEnumerable<ProductItemModel> GetProductItems()
+        {
+            foreach (var poe in this.Poes)
+            {
+                foreach (var item in poe.GetProductItemModels())
+                {
+                    yield return item;
+                }
+            }
+
+            foreach (var camera in this.Cameras)
+            {
+                foreach (var item in camera.GetProductItemModels())
+                {
+                    yield return item;
+                }
+            }
+
+            foreach (var light in this.Lights)
+            {
+                foreach (var item in light.GetProductItemModels())
+                {
+                    yield return item;
+                }
+            }
+
+            foreach (var lightUnit in this.LightControlUnits)
+            {
+                foreach (var item in lightUnit.GetProductItemModels())
+                {
+                    yield return item;
+                }
+            }
+
+            foreach (var displayUnit in this.DisplayUnits)
+            {
+                foreach (var item in displayUnit.GetProductItemModels())
+                {
+                    yield return item;
                 }
             }
         }

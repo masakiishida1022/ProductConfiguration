@@ -10,7 +10,7 @@ namespace ProductConfiguration
     public class CameraComponent : ComponentBase
     {
         public PowerSupplyType PowerType { get; }
-        CameraComponent(ComponentSpecifier specfier, EtherCableModel cable, PowerSupplyType powerType, ComponentSpecifier poeSpecifier, ComponentSpecifier displayUnitSpecifier,
+        public CameraComponent(ComponentSpecifier specfier, EtherCableModel cable, PowerSupplyType powerType, ComponentSpecifier poeSpecifier, ComponentSpecifier displayUnitSpecifier,
             List<ProductItemModel> options) : base(specfier, cable, options)
         {
             this.PowerType = powerType;

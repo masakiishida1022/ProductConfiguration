@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,7 +12,6 @@ namespace ProductConfiguration
     {
         public void CheckError(ProductConfiguration config)
         {
-            //照明コントローラにつながる照明を調べる
             //複数照明が直結
             List<int> existCameraIndex = new List<int>();
             foreach (var light in config.Lights)
@@ -31,14 +31,33 @@ namespace ProductConfiguration
                 }
 
             }
-
+            //照明コントローラにつながる照明を調べる
             foreach (var lightUnit in config.LightControlUnits)
             {
+                
+                var cameraIndexList = new List<int>();
+                int totalCh = 0;
+                
                 var lights = ComponentBase.GetRelatedComponents(config.Lights, ComponentType.LightControlUnit,
                     lightUnit.Specifier.Index);
+                
                 foreach (var light in lights)
                 {
 
+                    var camSpecifier = light.GetRelatedComponent(ComponentType.Camera).FirstOrDefault(); ;
+                    Debug.Assert(camSpecifier != null);                      
+                    existCameraIndex.Add(camSpecifier.Index);
+                    totalCh += 2;
+                }
+
+                if (4 < totalCh)
+                {
+
+                }
+
+                if (1 < cameraIndexList.Distinct().Count())
+                {
+                    //異なるカメラの照明が接続されている
                 }
             }
 

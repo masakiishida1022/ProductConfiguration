@@ -8,7 +8,7 @@ namespace ProductConfiguration
 {
     public class PoeComponent : ComponentBase
     {
-        PoeComponent(ComponentSpecifier specifier, EtherCableModel cable, List<ProductItemModel> options) : base(specifier, cable, options)
+        public PoeComponent(ComponentSpecifier specifier, EtherCableModel cable, List<ProductItemModel> options) : base(specifier, cable, options)
         { 
         }
 

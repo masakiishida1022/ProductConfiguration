@@ -51,7 +51,7 @@ namespace ProductConfiguration
         {
             foreach (var component in componentList)
             {
-                var specifier = component.GetRelatedComponent(type) ?.First();
+                var specifier = component.GetRelatedComponent(type) ?.FirstOrDefault();
                 if (specifier != null && specifier.Index == index)
                 {
                     yield return component;

@@ -8,7 +8,7 @@ namespace ProductConfiguration
 {
     public class LightComponent : ComponentBase
     {
-        LightComponent(ComponentSpecifier specfier, ComponentSpecifier targetCameraSpecifier, ComponentSpecifier lightCtrlUnitSpecifier,
+        public LightComponent(ComponentSpecifier specfier, ComponentSpecifier targetCameraSpecifier, ComponentSpecifier lightCtrlUnitSpecifier,
             List<ProductItemModel> options) : base(specfier, null, options)
         {
             this.AddRelatedComponent(targetCameraSpecifier);
