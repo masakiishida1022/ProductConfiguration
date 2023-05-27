@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{724AF897-D5E4-4D4E-BFBE-3750691A4AD4}</ProjectGuid>
+    <ProjectGuid>{F3503793-0B43-4713-A2EA-2FBEC5F8EB83}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>ProductConfiguration</RootNamespace>
-    <AssemblyName>ProductConfiguration</AssemblyName>
+    <RootNamespace>ConsoleApp1</RootNamespace>
+    <AssemblyName>ConsoleApp1</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,24 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CameraComponent.cs" />
-    <Compile Include="ComponentSpecifier.cs" />
-    <Compile Include="ComponentType.cs" />
-    <Compile Include="DisplayUnitComponent.cs" />
-    <Compile Include="ErrorCheck.cs" />
-    <Compile Include="EtherCableModel.cs" />
-    <Compile Include="LightComponent.cs" />
-    <Compile Include="LightControlUnitComponent.cs" />
-    <Compile Include="PoeComponent.cs" />
-    <Compile Include="PowerCalculator.cs" />
-    <Compile Include="PowerSupplyType.cs" />
-    <Compile Include="ProductConfiguration.cs" />
-    <Compile Include="ProductItemModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ComponentBase.cs" />
-    <Compile Include="RandomStringEncryption.cs" />
-    <Compile Include="ValueObjects.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

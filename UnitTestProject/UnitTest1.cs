@@ -14,97 +14,34 @@ namespace UnitTestProject
         [TestMethod]
         public void TestMethod1()
         {
-            var poeList = new List<PoeComponent>();
-            var cameraList = new List<CameraComponent>();
-            var lightList = new List<LightComponent>();
-            var lightUnitList = new List<LightControlUnitComponent>();
-
-            PoeComponent poe1 = new PoeComponent(
-                new ComponentSpecifier(ComponentType.Poe, 0), 
-                new EtherCableModel(),
-                new List<ProductItemModel>());
-            PoeComponent poe2 = new PoeComponent(
-                new ComponentSpecifier(ComponentType.Poe, 1), 
-                new EtherCableModel(),
-                new List<ProductItemModel>());
-
-            poeList.Add(poe1);
-            poeList.Add(poe2);
-
-            CameraComponent cam1 = new CameraComponent(
-                new ComponentSpecifier(ComponentType.Camera, 0),
-                
-                new EtherCableModel(),
-                PowerSupplyType.Poe,
-                new ComponentSpecifier(ComponentType.Poe, 0),
-                null,
-                null
-                );
-            CameraComponent cam2 = new CameraComponent(
-                new ComponentSpecifier(ComponentType.Camera, 1),
-                
-                new EtherCableModel(),
-                PowerSupplyType.Poe,
-                new ComponentSpecifier(ComponentType.Poe, 0),
-                null,
-                null
-            );
-
-            cameraList.Add(cam1);
-            cameraList.Add(cam2);
-
-            LightComponent light1 = new LightComponent(
-                new ComponentSpecifier(ComponentType.Light, 0), 
-                new ComponentSpecifier(ComponentType.Camera, 1),
-                new ComponentSpecifier(ComponentType.LightControlUnit, 0),
-                null
-                );
-            LightComponent light2 = new LightComponent(
-                new ComponentSpecifier(ComponentType.Light, 1),
-                new ComponentSpecifier(ComponentType.Camera, 1),
-                new ComponentSpecifier(ComponentType.LightControlUnit, 1),
-                null
-            );
-
-            LightComponent light3 = new LightComponent(
-                new ComponentSpecifier(ComponentType.Light, 2),
-                new ComponentSpecifier(ComponentType.Camera, 1),
-                null,
-                null
-            );
-
-            lightList.Add(light1);
-            lightList.Add(light2);
-            lightList.Add(light3);
-
-            LightControlUnitComponent lightUnit1 = new LightControlUnitComponent(
-                new ComponentSpecifier(ComponentType.LightControlUnit, 0),
-                new EtherCableModel(),
-                null
-                );
-            LightControlUnitComponent lightUnit2 = new LightControlUnitComponent(
-                new ComponentSpecifier(ComponentType.LightControlUnit, 1),
-                new EtherCableModel(),
-                null
-            );
+            int counts = 10;
+            Random random = new Random();
+            var encryptor = new RandomStringEncryptor();
+            for (int i = 0; i < counts; i++) {
+                string original = GenerateRandomString(10, random);
+                for (int j = 0; j < 2; j++) {
+                    string encrypted =  encryptor.Encrypt(original);
+                    string decrypted =  encryptor.Decrypt(encrypted);
+                    Console.WriteLine($"☆☆☆☆☆　　{original}, {encrypted}, {original}");
+                    Assert.AreEqual(original,decrypted);
+                }
+            }
 
 
+        }
 
-            lightUnitList.Add(lightUnit1);
-            lightUnitList.Add(lightUnit2);
+        public static string GenerateRandomString(int length, Random random)
+        {
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            
+            char[] stringChars = new char[length];
 
-            var productConfig =
-                new ProductConfiguration.ProductConfiguration(poeList, cameraList, lightList, lightUnitList, new List<DisplayUnitComponent>());
-            var cameras = productConfig.GetCamerasByConfigOrder();
+            for (int i = 0; i < length; i++)
+            {
+                stringChars[i] = chars[random.Next(chars.Length)];
+            }
 
-            var cameraLists = cameras.ToList();
-            var products = productConfig.GetProductItems();
-            var list = products.ToList();
-
-            var lights = productConfig.GetLightsByConfigOrder(1);
-            var lightTmpList = lights.ToList();
-            var lightUnits = productConfig.GetLightControlUnitsByConfigOrder(1);
-            var tmplist = lightUnits.ToList();
+            return new string(stringChars);
         }
     }
 }
