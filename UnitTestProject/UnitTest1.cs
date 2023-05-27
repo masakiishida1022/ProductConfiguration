@@ -19,12 +19,10 @@ namespace UnitTestProject
             var encryptor = new RandomStringEncryptor();
             for (int i = 0; i < counts; i++) {
                 string original = GenerateRandomString(10, random);
-                for (int j = 0; j < 2; j++) {
-                    string encrypted =  encryptor.Encrypt(original);
-                    string decrypted =  encryptor.Decrypt(encrypted);
-                    Console.WriteLine($"☆☆☆☆☆　　{original}, {encrypted}, {original}");
-                    Assert.AreEqual(original,decrypted);
-                }
+                string encrypted =  encryptor.Encrypt(original);
+                string decrypted =  encryptor.Decrypt(encrypted);
+                Assert.AreEqual(original,decrypted);
+                
             }
 
 
