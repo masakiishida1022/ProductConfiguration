@@ -4,8 +4,9 @@
 
 Name "ACT Installer" 
 OutFile "ActInst.exe" 
-;InstallDir "$PROGRAMFILES\ACT"
-;InstallDir ".\"
+InstallDir "$PROGRAMFILES\ACT"
+
+
 
 RequestExecutionLevel admin
 
@@ -23,14 +24,11 @@ UninstPage instfiles ;
 LoadLanguageFile "${NSISDIR}\Contrib\Language files\English.nlf"
 ;LoadLanguageFile "${NSISDIR}\Contrib\Language files\Japanese.nlf"
 
-
+LangString ShortcutDirectory ${LANG_ENGLISH} "Act 1.0.0"
 
 ;LicenseLangString license ${LANG_ENGLISH} license-english.txt
 ;LicenseLangString license ${LANG_JAPANESE} license-japanese.txt
 ;LicenseData $(license)
-
-LangString ShortcutDirectory ${LANG_ENGLISH} "Travelling Salesman Problem"
-;LangString ShortcutDirectory ${LANG_JAPANESE} "Japanese Travelling salesman Problem"
 
 Section "Install" ; 
 
@@ -57,6 +55,13 @@ ${ElseIf} ${SALES_REGION} == "KA"
 
     SetOutPath $INSTDIR\KA"
     File /nonfatal /a /r "../KA\" #note back slash at the end
+
+    SetOutPath $INSTDIR\report"
+    File /nonfatal "../report\*.*" #note back slash at the end
+
+    SetOutPath $INSTDIR\report\KA"
+    File /nonfatal /a /r "../report/KA\" #note back slash at the end
+
 ${Else}    
     MessageBox MB_OK "SALES_REGION is None2"
 ${EndIf}
@@ -66,11 +71,11 @@ ${EndIf}
 ;StrCpy $ALREADY_INSTALLED 1
 ;new_installation:
 
-;WriteUninstaller $INSTDIR\uninstaller.exe
+WriteUninstaller $INSTDIR\uninstaller.exe
 
-;CreateDirectory "$SMPROGRAMS\$(ShortcutDirectory)"
-;;CreateShortCut "$SMPROGRAMS\$(ShortcutDirectory)\TSP.lnk" $INSTDIR\TSP.exe
-;CreateShortCut "$SMPROGRAMS\$(ShortcutDirectory)\uninstaller.lnk" $INSTDIR\uninstaller.exe
+CreateDirectory "$SMPROGRAMS\$(ShortcutDirectory)"
+CreateShortCut "$SMPROGRAMS\$(ShortcutDirectory)\ProductConfiguration.lnk" $INSTDIR\ProductConfiguration.exe
+CreateShortCut "$SMPROGRAMS\$(ShortcutDirectory)\uninstaller.lnk" $INSTDIR\uninstaller.exe
 
 
 
@@ -81,9 +86,9 @@ SectionEnd ; end the section
 Section "Uninstall"
 
 
-Delete $INSTDIR\TSP.exe
+Delete $INSTDIR\ProductConfiguration.exe
 Delete $INSTDIR\readme.txt
-Delete $INSTDIR\TSP_ja_JP.qm
+Delete $INSTDIR\report
 
 !insertmacro UnInstallLib DLL SHARED REBOOT_NOTPROTECTED $SYSDIR\QtCore4.dll
 !insertmacro UnInstallLib DLL SHARED REBOOT_NOTPROTECTED $SYSDIR\QtGui4.dll
@@ -93,9 +98,9 @@ Delete $INSTDIR\TSP_ja_JP.qm
 
 Delete $INSTDIR\uninstaller.exe
 
-RMDir $INSTDIR
+RMDir /r $INSTDIR 
 
-Delete "$SMPROGRAMS\$(ShortcutDirectory)\TSP.lnk"
+Delete "$SMPROGRAMS\$(ShortcutDirectory)\ProductConfiguration.lnk"
 Delete "$SMPROGRAMS\$(ShortcutDirectory)\uninstaller.lnk"
 RMDir "$SMPROGRAMS\$(ShortcutDirectory)"
 
