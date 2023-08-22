@@ -1,0 +1,8 @@
+C:\Users\masaki\source\repos\ProductConfiguration\InstallerCustomizedAction\bin\Release\InstallerCustomizedAction.dll
+C:\Users\masaki\source\repos\ProductConfiguration\InstallerCustomizedAction\bin\Release\InstallerCustomizedAction.pdb
+C:\Users\masaki\source\repos\ProductConfiguration\InstallerCustomizedAction\obj\Release\InstallerCustomizedAction.csproj.AssemblyReference.cache
+C:\Users\masaki\source\repos\ProductConfiguration\InstallerCustomizedAction\obj\Release\InstallerCustomizedAction.csproj.CoreCompileInputs.cache
+C:\Users\masaki\source\repos\ProductConfiguration\InstallerCustomizedAction\obj\Release\InstallerCustomizedAction.dll
+C:\Users\masaki\source\repos\ProductConfiguration\InstallerCustomizedAction\obj\Release\InstallerCustomizedAction.pdb
+C:\Users\masaki\source\repos\ProductConfiguration\InstallerCustomizedAction\obj\Release\Installer1.resources
+C:\Users\masaki\source\repos\ProductConfiguration\InstallerCustomizedAction\obj\Release\InstallerCustomizedAction.csproj.GenerateResource.cache

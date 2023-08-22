@@ -1,0 +1,10 @@
+C:\Users\masaki\source\repos\ProductConfiguration\ProductConfiguration\bin\Release\ProductConfiguration.exe.config
+C:\Users\masaki\source\repos\ProductConfiguration\ProductConfiguration\bin\Release\ProductConfiguration.exe
+C:\Users\masaki\source\repos\ProductConfiguration\ProductConfiguration\bin\Release\ProductConfiguration.pdb
+C:\Users\masaki\source\repos\ProductConfiguration\ProductConfiguration\obj\Release\ProductConfiguration.csproj.CoreCompileInputs.cache
+C:\Users\masaki\source\repos\ProductConfiguration\ProductConfiguration\obj\Release\ProductConfiguration.exe
+C:\Users\masaki\source\repos\ProductConfiguration\ProductConfiguration\obj\Release\ProductConfiguration.pdb
+C:\Users\masaki\source\repos\ProductConfiguration\ProductConfiguration\obj\Release\ProductConfiguration.Properties.Resources.resources
+C:\Users\masaki\source\repos\ProductConfiguration\ProductConfiguration\obj\Release\ProductConfiguration.csproj.GenerateResource.cache
+C:\Users\masaki\source\repos\ProductConfiguration\ProductConfiguration\obj\Release\ProductConfiguration.csproj.AssemblyReference.cache
+C:\Users\masaki\source\repos\ProductConfiguration\ProductConfiguration\obj\Release\ProductConfiguration.Properties.Resource1.resources

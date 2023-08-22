@@ -1,0 +1,7 @@
+C:\Users\masaki\source\repos\ProductConfiguration\InstallCreator\bin\Release\InstallCreator.exe.config
+C:\Users\masaki\source\repos\ProductConfiguration\InstallCreator\bin\Release\InstallCreator.exe
+C:\Users\masaki\source\repos\ProductConfiguration\InstallCreator\bin\Release\InstallCreator.pdb
+C:\Users\masaki\source\repos\ProductConfiguration\InstallCreator\obj\Release\InstallCreator.csproj.AssemblyReference.cache
+C:\Users\masaki\source\repos\ProductConfiguration\InstallCreator\obj\Release\InstallCreator.csproj.CoreCompileInputs.cache
+C:\Users\masaki\source\repos\ProductConfiguration\InstallCreator\obj\Release\InstallCreator.exe
+C:\Users\masaki\source\repos\ProductConfiguration\InstallCreator\obj\Release\InstallCreator.pdb

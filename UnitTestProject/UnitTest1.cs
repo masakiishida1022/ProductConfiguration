@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Remoting.Messaging;
 using ProductConfiguration;
-
+using System.Drawing;
+using System.Globalization;
 
 namespace UnitTestProject
 {
@@ -26,6 +27,7 @@ namespace UnitTestProject
             }
 
 
+
         }
 
         public static string GenerateRandomString(int length, Random random)
@@ -41,5 +43,10 @@ namespace UnitTestProject
 
             return new string(stringChars);
         }
+    
+
+       
     }
+
+   
 }

@@ -18,3 +18,8 @@ C:\Users\masaki\source\repos\ProductConfiguration\UnitTestProject\bin\Debug\Micr
 C:\Users\masaki\source\repos\ProductConfiguration\UnitTestProject\obj\Debug\UnitTestProject.csproj.CopyComplete
 C:\Users\masaki\source\repos\ProductConfiguration\UnitTestProject\obj\Debug\UnitTestProject.dll
 C:\Users\masaki\source\repos\ProductConfiguration\UnitTestProject\obj\Debug\UnitTestProject.pdb
+C:\Users\masaki\source\repos\ProductConfiguration\UnitTestProject\bin\Debug\Installer\ActInstaller.nsi
+C:\Users\masaki\source\repos\ProductConfiguration\UnitTestProject\bin\Debug\Installer\MakeInstaller.bat
+C:\Users\masaki\source\repos\ProductConfiguration\UnitTestProject\bin\Debug\Installer\CultureSettingInfo.json
+C:\Users\masaki\source\repos\ProductConfiguration\UnitTestProject\bin\Debug\Installer\CultureSettingInfo_KA.json
+C:\Users\masaki\source\repos\ProductConfiguration\UnitTestProject\bin\Debug\Installer\CultureSettingInfo_KJ.json
